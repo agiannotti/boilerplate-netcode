@@ -31,10 +31,10 @@ namespace Character.Player
             // FOLLOW PLAYER
             // ROTATE AROUND PLAYER
             // COLLIDE WITH OBJECTS
-            if (_isplayerNotNull) FollowTarget();
+            if (_isplayerNotNull) HandleFollowTarget();
         }
 
-        private void FollowTarget()
+        private void HandleFollowTarget()
         {
             var targetCameraPosition = Vector3.SmoothDamp(
                 transform.position,

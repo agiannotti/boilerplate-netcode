@@ -9,7 +9,6 @@ namespace Character.Player
         public float horizontalMovement;
         public float moveAmount;
 
-
         [SerializeField] private float walkingSpeed = 2;
         [SerializeField] private float runningSpeed = 5;
         [SerializeField] private float rotationSpeed = 15;
