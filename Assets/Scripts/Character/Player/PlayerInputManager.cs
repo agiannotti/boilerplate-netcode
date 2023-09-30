@@ -9,9 +9,14 @@ namespace Character.Player
         public static PlayerInputManager Instance;
 
         [SerializeField] public Vector2 movementInput;
-        [SerializeField] public float verticalInput;
-        [SerializeField] public float horizontalInput;
-        [SerializeField] public float moveAmount;
+        [SerializeField] public Vector2 cameraInput;
+
+        public float verticalInput;
+        public float horizontalInput;
+        public float moveAmount;
+
+        public float cameraVerticalInput;
+        public float cameraHorizontalInput;
 
         private PlayerControls _playerControls;
 
@@ -34,7 +39,8 @@ namespace Character.Player
 
         private void Update()
         {
-            HandleMovementInput();
+            HandlePlayerMovementInput();
+            HandleCameraMovementInput();
         }
 
         private void OnEnable()
@@ -43,6 +49,7 @@ namespace Character.Player
             {
                 _playerControls = new PlayerControls();
                 _playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+                _playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
             }
 
             _playerControls.Enable();
@@ -65,7 +72,7 @@ namespace Character.Player
             }
         }
 
-        private void HandleMovementInput()
+        private void HandlePlayerMovementInput()
         {
             verticalInput = movementInput.y;
             horizontalInput = movementInput.x;
@@ -77,6 +84,12 @@ namespace Character.Player
             if (moveAmount <= 0.5 && moveAmount > 0)
                 moveAmount = 0.5f;
             else if (moveAmount > 0.5 && moveAmount <= 1) moveAmount = 1;
+        }
+
+        private void HandleCameraMovementInput()
+        {
+            cameraVerticalInput = cameraInput.y;
+            cameraHorizontalInput = cameraInput.x;
         }
 
         private void OnSceneChange(Scene oldScene, Scene newScene)

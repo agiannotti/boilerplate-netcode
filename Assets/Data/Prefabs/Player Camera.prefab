@@ -182,8 +182,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc14782bd53b141e6b81ce9158c0a502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraObject: {fileID: 2289808300450291852}
   player: {fileID: -9009939508224751393, guid: 51b79b111f10d42849290b328411665e, type: 3}
+  cameraObject: {fileID: 2289808300450291852}
+  cameraPivotTransform: {fileID: 6116183900361992250}
+  leftAndRightLookAngle: 0
+  upAndDownLookAngle: 0
+  leftAndRightRotationSpeed: 220
+  upAndDownRotationSpeed: 220
+  minimumPivot: -30
+  maximumPivot: 60
 --- !u!1 &9122761429532691835
 GameObject:
   m_ObjectHideFlags: 0

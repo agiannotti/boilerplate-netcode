@@ -377,6 +377,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498627136}
   m_CullTransparentMesh: 1
+--- !u!4 &565069893 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6116183900361992250, guid: b72d86901d89c421ba0ca2032c01fa41,
+    type: 3}
+  m_PrefabInstance: {fileID: 3662159901566175845}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &735969022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,16 +1495,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Camera (Left & Right)
       objectReference: {fileID: 0}
-    - target: {fileID: 5841165362373207934, guid: b72d86901d89c421ba0ca2032c01fa41,
+    - target: {fileID: 6521429101729732684, guid: b72d86901d89c421ba0ca2032c01fa41,
         type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6116183900361992250, guid: b72d86901d89c421ba0ca2032c01fa41,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6
-      objectReference: {fileID: 0}
+      propertyPath: cameraPivotTransform
+      value: 
+      objectReference: {fileID: 565069893}
     - target: {fileID: 7116959714921093580, guid: b72d86901d89c421ba0ca2032c01fa41,
         type: 3}
       propertyPath: m_LocalPosition.x
