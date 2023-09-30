@@ -5,12 +5,22 @@ namespace Character.Player
     public class PlayerCamera : MonoBehaviour
     {
         public static PlayerCamera Instance;
-        public Camera cameraObject;
         public PlayerManager player;
+        public Camera cameraObject;
 
-        private readonly float cameraSmoothSpeed = 1;
+        [SerializeField] private float leftAndRightLookAngle;
+        [SerializeField] private float upAndDownLookAngle;
+        [SerializeField] private float leftAndRightRotationSpeed = 220;
+        [SerializeField] private float upAndDownRotationSpeed = 220;
+
+        [Header("Camera Settings")]
+        private readonly float _cameraSmoothSpeed = 1;
+
+
+        [Header("Camera Values")]
+        private Vector3 _cameraVelocity;
+
         private bool _isplayerNotNull;
-        private Vector3 cameraVelocity;
 
         private void Awake()
         {
@@ -31,7 +41,9 @@ namespace Character.Player
             // FOLLOW PLAYER
             // ROTATE AROUND PLAYER
             // COLLIDE WITH OBJECTS
-            if (_isplayerNotNull) HandleFollowTarget();
+            if (!_isplayerNotNull) return;
+            HandleFollowTarget();
+            HandleRotation();
         }
 
         private void HandleFollowTarget()
@@ -39,9 +51,15 @@ namespace Character.Player
             var targetCameraPosition = Vector3.SmoothDamp(
                 transform.position,
                 player.transform.position,
-                ref cameraVelocity,
-                cameraSmoothSpeed * Time.deltaTime);
+                ref _cameraVelocity,
+                _cameraSmoothSpeed * Time.deltaTime);
             transform.position = targetCameraPosition;
+        }
+
+        private void HandleRotation()
+        {
+            // IF LOCKED ON, FORCE ROTATION TOWARDS TARGET
+            // ELSE ROTATE REGULARLY
         }
     }
 }
