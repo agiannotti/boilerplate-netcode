@@ -183,3 +183,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraObject: {fileID: 2289808300450291852}
+  player: {fileID: -9009939508224751393, guid: 51b79b111f10d42849290b328411665e, type: 3}

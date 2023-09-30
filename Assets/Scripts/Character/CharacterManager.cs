@@ -22,14 +22,16 @@ namespace Character
             // if this char is being controlled on our side ( owner ), then assign network position to position of transform
             if (IsOwner)
             {
-                _characterNetworkManager.networkPosition.Value = transform.position;
-                _characterNetworkManager.networkRotation.Value = transform.rotation;
+                var transform1 = transform;
+                _characterNetworkManager.networkPosition.Value = transform1.position;
+                _characterNetworkManager.networkRotation.Value = transform1.rotation;
             }
             // if this char is being controlled elsewhere, assign position locally by position of network transform
             else
             {
                 // position
-                transform.position = Vector3.SmoothDamp
+                Transform transform1;
+                (transform1 = transform).position = Vector3.SmoothDamp
                 (transform.position,
                     _characterNetworkManager.networkPosition.Value,
                     ref _characterNetworkManager.networkPositionVelocity,
@@ -37,10 +39,14 @@ namespace Character
 
                 // rotation
                 transform.rotation = Quaternion.Slerp(
-                    transform.rotation,
+                    transform1.rotation,
                     _characterNetworkManager.networkRotation.Value,
                     _characterNetworkManager.networkRotationSmoothTime);
             }
+        }
+
+        protected virtual void LateUpdate()
+        {
         }
     }
 }
